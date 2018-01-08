@@ -12,19 +12,21 @@ import pandas as pd
 import os
 from flask import Flask
 
+from sebwr import readRemoteCsvToDf
+
 
 server = Flask('my app')
 
-df_fund_data = pd.read_csv('https://plot.ly/~jackp/17534.csv')
+df_fund_data = readRemoteCsvToDf('https://plot.ly/~jackp/17534.csv')
 df_fund_data.head()
 
-df_perf_summary = pd.read_csv('https://plot.ly/~jackp/17530.csv')
+df_perf_summary = readRemoteCsvToDf('https://plot.ly/~jackp/17530.csv')
 df_perf_summary.head()
 
-df_cal_year = pd.read_csv('https://plot.ly/~jackp/17528.csv')
+df_cal_year = readRemoteCsvToDf('https://plot.ly/~jackp/17528.csv')
 df_cal_year.head()
 
-df_perf_pc = pd.read_csv('https://plot.ly/~jackp/17532.csv')
+df_perf_pc = readRemoteCsvToDf('https://plot.ly/~jackp/17532.csv')
 
 
 def make_dash_table(df):
@@ -51,10 +53,10 @@ modifed_perf_table.insert(
 )
 
 
-df_fund_info = pd.read_csv('https://plot.ly/~jackp/17544.csv')
-df_fund_characteristics = pd.read_csv('https://plot.ly/~jackp/17542.csv')
-df_fund_facts = pd.read_csv('https://plot.ly/~jackp/17540.csv')
-df_bond_allocation = pd.read_csv('https://plot.ly/~jackp/17538.csv')
+df_fund_info = readRemoteCsvToDf('https://plot.ly/~jackp/17544.csv')
+df_fund_characteristics = readRemoteCsvToDf('https://plot.ly/~jackp/17542.csv')
+df_fund_facts = readRemoteCsvToDf('https://plot.ly/~jackp/17540.csv')
+df_bond_allocation = readRemoteCsvToDf('https://plot.ly/~jackp/17538.csv')
 
 
 app = dash.Dash('GS Bond II Portfolio', server=server,
@@ -211,10 +213,10 @@ app.layout = html.Div([
 
                 # Data tables on this page:
                 # ---
-                # df_fund_info = pd.read_csv('https://plot.ly/~jackp/17544/.csv')
-                # df_fund_characteristics = pd.read_csv('https://plot.ly/~jackp/17542/.csv')
-                # df_fund_facts = pd.read_csv('https://plot.ly/~jackp/17540/.csv')
-                # df_bond_allocation = pd.read_csv('https://plot.ly/~jackp/17538/')
+                # df_fund_info = readRemoteCsvToDf('https://plot.ly/~jackp/17544/.csv')
+                # df_fund_characteristics = readRemoteCsvToDf('https://plot.ly/~jackp/17542/.csv')
+                # df_fund_facts = readRemoteCsvToDf('https://plot.ly/~jackp/17540/.csv')
+                # df_bond_allocation = readRemoteCsvToDf('https://plot.ly/~jackp/17538/')
 
                 # Column 1
 
